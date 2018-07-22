@@ -1,0 +1,5 @@
+server:
+  servlet:
+    context-path: /stockservices
+  port: 8085
+    

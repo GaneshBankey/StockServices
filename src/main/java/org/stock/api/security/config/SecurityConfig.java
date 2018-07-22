@@ -27,7 +27,14 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 @EnableGlobalMethodSecurity(prePostEnabled=true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private static final RequestMatcher PUBLIC_URLS = new OrRequestMatcher(
-		    	new AntPathRequestMatcher("/public/**")
+		    	new AntPathRequestMatcher("/api/public/**"),
+		    	new AntPathRequestMatcher("/v2/api-docs"),
+		    	new AntPathRequestMatcher("/configuration/ui"),
+		    	new AntPathRequestMatcher("/swagger-resources/**"),
+		    	new AntPathRequestMatcher("/configuration/**"),
+		    	new AntPathRequestMatcher("/actuator/**"),
+		    	new AntPathRequestMatcher("/swagger-ui.html"),
+		    	new AntPathRequestMatcher("/webjars/**")
 			);
 	private static final RequestMatcher PROTECTED_URLS = new NegatedRequestMatcher(PUBLIC_URLS);
 
@@ -47,6 +54,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
 		http
+			.cors()
+			.and()
 	    	.sessionManagement()
 	    	.sessionCreationPolicy(STATELESS)
 	    	.and()

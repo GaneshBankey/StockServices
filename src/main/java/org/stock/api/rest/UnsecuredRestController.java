@@ -3,6 +3,7 @@ package org.stock.api.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,7 +13,7 @@ import org.stock.api.user.crud.api.UserCrudService;
 import org.stock.api.user.entity.User;
 
 @RestController
-@RequestMapping("/public/users")
+@RequestMapping("/api/public/users")
 public class UnsecuredRestController {
 
 	@Autowired
@@ -21,6 +22,10 @@ public class UnsecuredRestController {
 	@Autowired
 	UserCrudService users;
 	
+	@GetMapping("/getMessage")
+	public String getMessage() {
+		return "My Message";
+	}
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public  ResponseEntity < String > register(
     	    @RequestParam("username") final String username,

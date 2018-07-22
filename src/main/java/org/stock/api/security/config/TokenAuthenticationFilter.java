@@ -47,7 +47,7 @@ public class TokenAuthenticationFilter extends AbstractAuthenticationProcessingF
 	    final FilterChain chain,
 	    final Authentication authResult) throws IOException, ServletException {
 	    super.successfulAuthentication(request, response, chain, authResult);
-	    
+	    System.out.println(request.getRequestURI());
 	    chain.doFilter(request, response);
 	}
 	private String removeStart(String value, String bearer) {
