@@ -18,7 +18,7 @@ public class StockRestController {
 	}
 	
 	@ValidateParams(
-			@ValidateParam(name = "sourceId", isRequired=true)
+			@ValidateParam(name = "sourceId", required=true)
 	)
 	@GetMapping("/validate")
 	public String validate(@RequestParam(name="sourceId") String sourceID) {

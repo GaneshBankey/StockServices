@@ -42,7 +42,7 @@ public class RequestValidateInterceptor extends HandlerInterceptorAdapter {
 						 }
 						 
 					 }else {
-						 if(validateParam.isRequired()) {
+						 if(validateParam.required()) {
 							 throw new Exception("Required Parameter ["+validateParam.name()+"]is missing from request!!!");
 						 }
 					 }

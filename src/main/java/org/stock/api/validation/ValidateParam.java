@@ -13,5 +13,5 @@ import java.lang.annotation.Target;
 public @interface ValidateParam {	
 	String name();
 	WhiteList sanitize() default WhiteList.DEFAULT;
-	boolean isRequired() default false;
+	boolean required() default false;
 }
